@@ -1,0 +1,79 @@
+.header{
+    background-color: #000;
+    width: 100%;
+    height: 70px;
+    padding: 4px 30px;
+}
+
+.header-left-nav {
+    float: left;
+}
+.header-left-nav form {
+    display: inline-block;
+}
+.header-left-nav .form-control {
+    width: 180px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    padding-left: 30px;
+}
+
+.header i {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    font-size: 18px;
+}
+.fa-map-marker-alt {
+    content: "\f3c5";
+}
+.header-sharch {
+    position: relative;
+}
+@media (min-width: 992px){
+    .d-lg-inline-block {
+    display: inline-block!important;
+}}
+
+
+/* ヘッダーボタン */
+.header-rignt-nav {
+    float: right;
+}
+.btn-primary {
+    color: #212529;
+    background-color: #4a90e2 !important;
+    color: #fff;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+/*フッダー*/
+.footer{
+   /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    margin-top: 64px;
+    padding-top: 90px;
+    background-color: #111;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+}
+
