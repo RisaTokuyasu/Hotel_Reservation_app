@@ -6,12 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" media="all" href="/assets/application-a8ca4c276281a74646e94609ae4a0eee0a7918869ecc82a06fbbc9997e6fc3b5.css" data-turbolinks-track="reload">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  </head>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   <body>
     <header class="header">
@@ -39,8 +39,25 @@
 
           <div class="nav-item">
 
-            <a class="btn btn-primary my-2 mx-3" href="#">ログイン</a>
-            <a class="btn btn-secondary" href="#">登録する</a>
+           <% if user_signed_in? %>
+             <div class="nav-item d-sm-inline-block d-none">
+               <%= current_user.name %>
+             </div>
+
+              <div class="nav-item">
+                <ul class="header-nav-menu">
+                  <li class="menu_li"><%= link_to "ルーム登録", users_show_path %></li>
+                  <li class="menu_li"><%= link_to "予約済みルーム一覧", users_show_path %></li>
+                  <li class="menu_li"><%= link_to "登録済みルーム一覧", users_show_path %></li>
+                  <li class="menu_li"><%= link_to "設定", users_account_path %></li>
+                  <li class="menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                </ul>
+             </div>
+           <% else %>
+             <%= link_to "ログイン",new_user_session_path, class:"btn btn-primary my-2 mx-3" %>
+             <%= link_to "登録する",new_user_registration_path, class:"btn btn-secondary" %>
+           <% end %>
+
           </div>
         </div>
       </div>

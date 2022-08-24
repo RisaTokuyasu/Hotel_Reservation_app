@@ -50,6 +50,13 @@
     font-size: 24px;
 }
 
+.notifications {
+    color: #fff;
+    text-align: center;
+}
+.notifications .notice {
+    background-color: lightBlue;
+}
 
 /*レスポンシブ*/
 @media (min-width: 1200px){

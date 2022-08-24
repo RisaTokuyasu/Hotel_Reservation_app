@@ -69,3 +69,5 @@ gem 'net-pop'
 gem 'devise_token_auth'
 
 gem 'devise-i18n'
+
+gem 'carrierwave'

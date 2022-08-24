@@ -34,13 +34,18 @@ ul {
 .header-sharch {
     position: relative;
 }
+
+.nav-item {
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+}
+
 @media (min-width: 992px){
     .d-lg-inline-block {
     display: inline-block!important;
 }}
 
-
-/* ヘッダーボタン */
 .header-rignt-nav {
     float: right;
 }
@@ -66,17 +71,36 @@ ul {
     background-color: #5a6268;
     border-color: #545b62;
 }
-/*フッダー*/
-.footer{
-   /* position: absolute; */
-    bottom: 0;
-    width: 100%;
-    height: 180px;
-    margin-top: 64px;
-    padding-top: 90px;
-    background-color: #111;
-    box-sizing: border-box;
-    color: #fff;
-    text-align: center;
+.device a {
+    color: #007bff !important;
+}
+.user .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
 }
 
+.user .user-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 30px auto;
+}
+.user .update-content label {
+    font-weight: bold;
+}
+.user .user-nav li a:hover {
+    color: #4a90e2; 
+    text-decoration: none;
+}
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    text-decoration: none;
+    color: #333333;
+}
+
+.user .icon-box {
+    text-align: center;
+}
