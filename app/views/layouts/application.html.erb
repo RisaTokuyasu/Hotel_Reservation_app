@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <body>
     <header class="header">
 
@@ -43,12 +43,18 @@
              <div class="nav-item d-sm-inline-block d-none">
                <%= current_user.name %>
              </div>
+              
+              <div class="nav-item">               
+                <% if @user.image.attached? %>
+                    <%= image_tag @user.image,class:"icon-image host-icon nav-trigger"%> 
+                <% else %>
+                    <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg"  alt='アイコン画像' class="icon-image host-icon nav-trigger">
+                <% end %>  
 
-              <div class="nav-item">
-                <ul class="header-nav-menu">
-                  <li class="menu_li"><%= link_to "ルーム登録", users_show_path %></li>
-                  <li class="menu_li"><%= link_to "予約済みルーム一覧", users_show_path %></li>
-                  <li class="menu_li"><%= link_to "登録済みルーム一覧", users_show_path %></li>
+                <ul class="header-nav-menu" >
+                  <li class="menu_li"><%= link_to "ルーム登録", new_room_path %></li>
+                  <li class="menu_li"><%= link_to "予約済みルーム一覧", rooms_path %></li>
+                  <li class="menu_li"><%= link_to "登録済みルーム一覧", rooms_path %></li>
                   <li class="menu_li"><%= link_to "設定", users_account_path %></li>
                   <li class="menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 </ul>
@@ -58,16 +64,34 @@
              <%= link_to "登録する",new_user_registration_path, class:"btn btn-secondary" %>
            <% end %>
 
+            <script>
+              $(document).ready(function(){
+              $(".nav-trigger").click(function () {
+                $(".header-nav-menu").toggleClass("change");
+                });
+              });
+            </script>
+  
+            </div>
+          </div>
+              
+
           </div>
         </div>
       </div>
     </header>
 
+      <div class="notifications">
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+      </div>
+
     <%= yield %>
 
-    <footer class="footer">
-      <p>© 2020 POTEPAN.INC.</p>
-    </footer>
+     <footer class="footer">
+       <p>© 2020 POTEPAN.INC.</p>
+      </footer>
 
    </body>
 </html>

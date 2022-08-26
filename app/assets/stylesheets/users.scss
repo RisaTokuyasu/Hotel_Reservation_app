@@ -32,6 +32,7 @@ div.field, div.actions {
     border-radius: 5px;
     padding: 4px;
     margin: 0 5px;
+    white-space: pre;
 }
 .required-a::after {
     content: "必須";
@@ -41,6 +42,7 @@ div.field, div.actions {
     border-radius: 5px;
     padding: 4px;
     margin: 0 5px;
+    white-space: pre;
 }
 
 .user .user-nav-mobile .active {

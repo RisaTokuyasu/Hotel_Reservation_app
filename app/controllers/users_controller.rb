@@ -11,19 +11,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def  update
-    @user = User.find([:id])
-    if @user.update(params.require(:user).permit(:user_avater, :name, :profile))
+    @user = User.find(params[:id])
+    if @user.update(params.require(:user).permit(:image, :name, :profile))
       flash[:notice] = "更新しました"
-      redirect_to :users_profile_path
+      redirect_to :edit_user
     else
     flash.now[:notice]="更新に失敗しました。もう一度入力し直してください"
-      render "users/profile"
+      redirect_to :edit_user
     end
   end
 
-  def account
-    @user = current_user
-  end
 
 end

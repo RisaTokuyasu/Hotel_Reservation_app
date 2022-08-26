@@ -65,15 +65,34 @@ a {
 .header-nav-menu {
     background-color: #fff;
     border: 3px solid #F6F8F9;
- /*   display: none; */
+    display: none; 
     position: absolute;
     top: 70px;
     right: 10px;
     padding: 15px;
     z-index: 1000;
 }
+.change{
+    display: inline-block; 
+}
 .header-nav-menu li {
     line-height: 30px;
     font-size: 16px;
     padding: 3px 5px;
+}
+.host-icon {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.nav-trigger div:checked {
+    background-color: #fff;
+    border: 3px solid #F6F8F9;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    padding: 15px;
+    z-index: 1000;
 }

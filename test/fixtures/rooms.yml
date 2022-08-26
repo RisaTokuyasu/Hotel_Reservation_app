@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  picture: 
+  name: MyString
+  total: 1
+  strat_date: 2022-08-25
+  end_date: 2022-08-25
+  start_time: 2022-08-25 03:01:41
+
+two:
+  picture: 
+  name: MyString
+  total: 1
+  strat_date: 2022-08-25
+  end_date: 2022-08-25
+  start_time: 2022-08-25 03:01:41
