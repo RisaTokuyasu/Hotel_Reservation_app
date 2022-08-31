@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
     @user = current_user
+    @rooms = Room.all
   end
 
   def new
@@ -11,12 +11,13 @@ class RoomsController < ApplicationController
 
   def create
     @user = current_user
-    @room = Room.new(params.require(:room).permit(:name,:total,:address,:introducution,:picture))
+    @room = Room.new(params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id))
+    
     if @room.save
       flash[:notice] = "ルーム情報を新規登録しました"
-      redirect_to :rooms
+      redirect_to room_path(room)
     else
-      flash[:notice] = "登録できませんでした。もう一度入力してください"
+      flash[:alert] = "登録できませんでした"
       render "new"
     end
 
@@ -25,6 +26,8 @@ class RoomsController < ApplicationController
   def show
     @user = current_user
     @room = Room.find(params[:id])
+    
   end
+
 
 end

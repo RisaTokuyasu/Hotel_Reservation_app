@@ -96,3 +96,6 @@ a {
     padding: 15px;
     z-index: 1000;
 }
+.form-btn{
+    max-width: 100%;
+}

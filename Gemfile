@@ -71,3 +71,5 @@ gem 'devise_token_auth'
 gem 'devise-i18n'
 
 gem 'carrierwave'
+
+ gem 'pry-rails'

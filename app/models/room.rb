@@ -6,4 +6,6 @@ class Room < ApplicationRecord
    validates :introducution, presence: true
    has_one_attached :image
 
+
+
 end
