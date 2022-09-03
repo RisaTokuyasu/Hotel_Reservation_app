@@ -12,22 +12,35 @@ class RoomsController < ApplicationController
   def create
     @user = current_user
     @room = Room.new(params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id))
-    
     if @room.save
-      flash[:notice] = "ルーム情報を新規登録しました"
-      redirect_to room_path(room)
+      redirect_to new_reservation_path(id: @room.id) ,notice: "ルーム情報を新規登録しました"
     else
-      flash[:alert] = "登録できませんでした"
       render "new"
     end
 
   end
 
-  def show
+  before_action :set_q,only: [:search]
+
+  def search
+    @rooms = Room.all
     @user = current_user
-    @room = Room.find(params[:id])
-    
+    @results = @q.result
+    binding.pry
   end
 
+  private
+
+  def set_q
+    @q = Room.ransack(params[:q])
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  def room_params
+    params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id)
+  end
 
 end

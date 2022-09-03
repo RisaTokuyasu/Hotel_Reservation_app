@@ -72,4 +72,6 @@ gem 'devise-i18n'
 
 gem 'carrierwave'
 
- gem 'pry-rails'
+gem 'pry-rails'
+
+gem 'ransack'

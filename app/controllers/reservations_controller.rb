@@ -23,11 +23,11 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(params.require(:reservation).permit(:id,:name,:introducution,:picture,:start_date,:end_date,:price,:total_price,:updated_at))
+    @reservation = Reservation.new(params.require(:reservation).permit(:room_id,:name,:introducution,:picture,:start_date,:end_date,:price,:total_price,:people,:total_day))
     if params[:back] || !@reservation.save
       redirect_to root_path
     else
-      redirect_to  reservation_path(:id), notice: "予約が完了しました"
+      redirect_to  reservation_path(@reservation), notice: "予約が完了しました"
     end
   end
 
@@ -39,6 +39,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:id,:name,:introducution,:picture,:start_date,:end_date,:people,:price,:updated_at)
+    params.require(:reservation).permit(:room_id,:name,:introducution,:picture,:start_date,:end_date,:people,:price)
   end
 end

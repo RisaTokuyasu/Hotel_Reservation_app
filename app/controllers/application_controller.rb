@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
 
    def after_sign_out_path_for(resource)
-       root_path # ログアウト後に遷移するpathを設定
+        flash[:notice] = "ログアウトしました" 
+        root_path # ログアウト後に遷移するpathを設定
    end
 
    before_action :configure_permitted_parmeteres, if: :devise_controller?
