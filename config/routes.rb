@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  get 'pages/home',to:'pages#home'
 
   get 'users/account'
   devise_for :users
@@ -12,15 +10,19 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:edit,:update]
 
-  resources :rooms, only: [:index,:new] do
+  resources :rooms, only: [:index,:new,:show] do
     collection do
+      get 'home',to:'home'
       get 'search'
+      post 'search'
     end
   end
+  root 'rooms#home'
+
 
   resources :reservations, only:[:index, :new, :create, :show] do
     collection do
-    post :confirm
+      post :confirm
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

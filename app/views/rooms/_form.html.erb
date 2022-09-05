@@ -1,0 +1,28 @@
+<%= form_tag(search_rooms_path, :method =>'get') do %>
+  <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"東京" %> 
+  <%= submit_tag '検索' %>
+<% end %>
+
+
+<!-- <%= search_form_for @q, url: search_rooms_path do |f| %>  -->
+<!--  <%= f.search_field :address_cont %>  -->
+ <!-- <%= f.submit '検索' %> -->
+<!--<% end %>-->
+
+<%= search_form_for @q, url: search_rooms_path do |f| %>
+  <%= f.search_field :address_cont %> 
+  <%= f.submit '検索' %>
+<% end %>
+
+
+<%= search_form_for @q, url:search_rooms_path do |f| %>
+  <%= f.label :address_cont, "エリア" %> 
+  <%= f.search_field :address_cont %> 
+  <%= f.submit '検索' %>
+
+
+
+    <%= form_with url:search_rooms_path, method: :get, local: true do |f| %>
+    <%= f.text_field :address, class: "form-control", placeholder:"東京" %> 
+    <%= submit_tag '検索' %>
+    <% end %>

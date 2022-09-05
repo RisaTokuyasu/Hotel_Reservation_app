@@ -1,10 +1,11 @@
-<%= search_form_for @q, url: search_rooms_path do |f| %>
-  <%= f.search_field :address_cont %> 
-  <%= f.submit '検索' %>
+<%= form_tag(search_rooms_path, :method =>'get') do %>
+  <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"東京" %> 
+  <%= submit_tag '検索' %>
 <% end %>
 
+
 <div class="container-fiuld reservations">
-    <h4 class="pb-4">検索結果：</h4>
+    <h4 class="pb-4">検索結果：<%= @rooms.count %>件</h4>
     <table>
         <thead>
             <tr align="center">

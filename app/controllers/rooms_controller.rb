@@ -1,7 +1,30 @@
 class RoomsController < ApplicationController
+
+  #before_action :set_q,only: [:home, :search]
+
   def index
     @user = current_user
     @rooms = Room.all
+  end
+
+  def home
+    @user = current_user
+    @rooms = Room.all
+
+  # @result = @q.result
+   # @rooms = Room.search(params[:address])
+ end
+ 
+ def address
+   redirect_to search_rooms_path
+ end
+
+  def search
+   @user = current_user
+   @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:address]}%")
+   @search_result = "#{params[:address]}"
+    # @result = @q.result
+
   end
 
   def new
@@ -11,6 +34,7 @@ class RoomsController < ApplicationController
 
   def create
     @user = current_user
+    @room.user_id = current_user.id
     @room = Room.new(params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id))
     if @room.save
       redirect_to new_reservation_path(id: @room.id) ,notice: "ルーム情報を新規登録しました"
@@ -19,28 +43,24 @@ class RoomsController < ApplicationController
     end
 
   end
-
-  before_action :set_q,only: [:search]
-
-  def search
-    @rooms = Room.all
-    @user = current_user
-    @results = @q.result
-    binding.pry
+  
+  def show
+    @rooms = current_user.rooms
   end
 
-  private
+# def search
+#   @rooms = Room.all
+#   @user = current_user
+#   @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:search]}%")
+#   @search_result = "#{params[:search]}"
+#@result = @q.result
 
-  def set_q
-    @q = Room.ransack(params[:q])
-  end
+# end
 
-  def set_room
-    @room = Room.find(params[:id])
-  end
+  #private
 
-  def room_params
-    params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id)
-  end
+ # def set_q
+  #  @q = Room.ransack(params[:q])
+  #end
 
 end
