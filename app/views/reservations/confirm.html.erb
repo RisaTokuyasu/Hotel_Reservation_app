@@ -7,12 +7,10 @@
                     <%= form_with model: @reservation do |f| %>
 
                         <%= f.hidden_field :people %>
-                        <%= f.hidden_field :name %>
-                        <%= f.hidden_field :introducution %>
-                        <%= f.hidden_field :picture %>
                         <%= f.hidden_field :room_id %>
+                        <%= f.hidden_field :user_id %>
 
-                        <h5 class="price-icon"><%= @reservation.price %> / 日 </h5>
+                        <h5 class="price-icon"><%= @room.total %> / 日 </h5>
 
                         <div class="reservations-new-date-selsct">
 

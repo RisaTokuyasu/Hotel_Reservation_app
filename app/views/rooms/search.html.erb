@@ -1,11 +1,5 @@
-<%= form_tag(search_rooms_path, :method =>'get') do %>
-  <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"東京" %> 
-  <%= submit_tag '検索' %>
-<% end %>
-
-
 <div class="container-fiuld reservations">
-    <h4 class="pb-4">検索結果：<%= @rooms.count %>件</h4>
+   <!-- <h4 class="pb-4">検索結果：<%= @rooms.count %>件</h4> -->
     <table>
         <thead>
             <tr align="center">
@@ -23,7 +17,7 @@
                     <td>
                         <image src=" <%= room.picture %> " onerror= "this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';" class="reservations-image">
                     </td>
-                    <td class="posts-name"><%= link_to "#{room.name}", {controller: 'reservations', action: 'new', id: room.id} %></td>
+                    <td class="posts-name"><%= link_to "#{room.room_name}", {controller: 'reservations', action: 'new', id: room.id} %></td>
                     <td class="posts-content"><%= room.address %></td>
                     <td class="price-icon"><%= room.total %></td>   
                 

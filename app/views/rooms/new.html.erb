@@ -22,6 +22,8 @@
             <div class="room-view-box">
                 <%= form_with model: @room do |f| %>
 
+                <%= f.hidden_field :user_id, :value => @user.id %>
+                
                 <div class="update-content">
                     <div class="row">
                         <h5>ルーム情報登録</h5>
@@ -30,8 +32,8 @@
 
                 <div class="update-content">
                     <div class="row">
-                        <%= f.label :name,"ルーム名",class:"col-md-3 required-a" %>
-                        <%= f.text_field :name,placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4" %>
+                        <%= f.label :room_name,"ルーム名",class:"col-md-3 required-a" %>
+                        <%= f.text_field :room_name,placeholder:"ルーム名を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
                     </div>
 
                 </div>
@@ -39,7 +41,7 @@
                 <div class="update-content">
                     <div class="row">
                         <%= f.label :introducution,"ルーム紹介",class:"col-md-3 required-a" %>
-                        <%= f.text_field :introducution,placeholder:"ルーム紹介を入力", class:"form-control col-md-9 mb-4" %>
+                        <%= f.text_field :introducution,placeholder:"ルーム紹介を入力", class:"form-control col-md-9 mb-4 field_wieth_error" %>
                     </div>
 
                 </div>
@@ -47,7 +49,7 @@
                 <div class="update-content">
                     <div class="row">
                         <%= f.label :total,"料金",class:"col-md-3 required-a" %>
-                        <%= f.number_field :total,placeholder:"一日あたりの料金を入力", class:"form-control mb-4 col-md-9" %>
+                        <%= f.number_field :total,placeholder:"一日あたりの料金を入力", class:"form-control mb-4 col-md-9 field_wieth_error" %>
                     </div>
 
                 </div>
@@ -55,7 +57,7 @@
                 <div class="update-content">
                     <div class="row">
                         <%= f.label :address,"住所",class:"col-md-3 required-a" %>
-                        <%= f.text_field :address,placeholder:"住所を入力", class:"form-control mb-4 col-md-9" %>
+                        <%= f.text_field :address,placeholder:"住所を入力", class:"form-control mb-4 col-md-9 field_wieth_error" %>
                     </div>
 
                 </div>
@@ -63,7 +65,7 @@
                 <div class="update-content">
                     <div class="row">
                         <%= f.label :picture,"ルーム画像",class:"col-md-3 required-a" %>
-                        <%= f.file_field :picture, class:"mb-4 col-md-9" %>
+                        <%= f.file_field :picture, class:"mb-4 col-md-9 field_wieth_error" %>
                     </div>
 
                 </div>

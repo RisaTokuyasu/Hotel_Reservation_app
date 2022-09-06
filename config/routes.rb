@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:edit,:update]
 
-  resources :rooms, only: [:index,:new,:show] do
+  resources :rooms, only: [:index,:new,:show,:create] do
     collection do
       get 'home',to:'home'
       get 'search'

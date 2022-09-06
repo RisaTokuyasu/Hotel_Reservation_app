@@ -12,7 +12,7 @@
 
                 <div class="room-show-profile">
                     <p class="room-show-profile-name">
-                        <%= @room.name %>
+                        <%= @room.room_name %>
                     </p>
                     <p class="room-show-profile-address">
                         <%= @room.address %>
@@ -29,17 +29,16 @@
             <div class="room-show-nav">
                 <%= form_with model:@reservation, url:confirm_reservations_path(@room) do |f| %>
 
-                <%= f.hidden_field :name, :value => @room.name %>
-                <%= f.hidden_field :introducution, :value => @room.introducution %>
-                <%= f.hidden_field :picture, :value => @room.picture %>
                 <%= f.hidden_field :room_id, :value => @room.id %>
+                <%= f.hidden_field :user_id, :value => @user.id %>
                 
                 <%= f.label :room_id ,"部屋ID"%>
                 <h5 class="price-icon"><%= @room.total %> / 日</h5>
-                <%= f.hidden_field :price, :value => @room.total %>
+
                     <div class="room-show-date-select">
                         <%= f.label :room_id ,"部屋ID"%>
                         <p><%= @room.id%></p> <br>
+                        
                         <%= f.label :start_date ,"開始日"%>
                         <%= f.date_field :start_date ,class:"form-control mb-4" %>
                         <%= f.label :end_date ,"終了日"%>

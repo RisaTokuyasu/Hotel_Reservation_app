@@ -26,3 +26,9 @@
     <%= f.text_field :address, class: "form-control", placeholder:"東京" %> 
     <%= submit_tag '検索' %>
     <% end %>
+    
+    <%= form_with url:search_rooms_path, method: :get, local: true do |f| %>
+<%= f.text_field :address , class: "form-control", placeholder:"東京" %> 
+<%= submit_tag '検索' %>
+<% end %>
+    

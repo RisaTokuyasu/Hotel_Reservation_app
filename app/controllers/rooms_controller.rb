@@ -22,8 +22,11 @@ class RoomsController < ApplicationController
   def search
    @user = current_user
    @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:address]}%")
-   @search_result = "#{params[:address]}"
-    # @result = @q.result
+   binding.pry
+   if params[:keyword].present?
+     @rooms = Room.where([ 'rooms.adress LIKE ? OR rooms.introduction LIKE ? OR rooms.room_name LIKE ? ', "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%" ])
+   
+    end
 
   end
 
@@ -34,18 +37,17 @@ class RoomsController < ApplicationController
 
   def create
     @user = current_user
-    @room.user_id = current_user.id
-    @room = Room.new(params.require(:room).permit(:name,:introducution,:total,:address,:picture,:id))
+    @room = Room.new(params.require(:room).permit(:room_name,:introducution,:total,:address,:picture,:user_id))
     if @room.save
-      redirect_to new_reservation_path(id: @room.id) ,notice: "ルーム情報を新規登録しました"
+      redirect_to :rooms ,notice: "ルーム情報を新規登録しました"
     else
-      render "new"
+      render "new" 
     end
-
   end
   
   def show
-    @rooms = current_user.rooms
+    @rooms = Room.find(params[:id])
+    @reservations = Reservation.new
   end
 
 # def search
@@ -54,13 +56,5 @@ class RoomsController < ApplicationController
 #   @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:search]}%")
 #   @search_result = "#{params[:search]}"
 #@result = @q.result
-
-# end
-
-  #private
-
- # def set_q
-  #  @q = Room.ransack(params[:q])
-  #end
 
 end

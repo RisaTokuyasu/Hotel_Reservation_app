@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
    validates :end_date, presence: true
    validates :people, presence: true
 
-   belongs_to :room,optional: true
+   belongs_to :room
    belongs_to :user
 end
 

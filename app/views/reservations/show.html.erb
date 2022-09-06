@@ -2,13 +2,15 @@
     <div class="row">
         <div class="col-md-12 user-view">
             <div class="user-view-box">
+            
                 <%= form_with model: @reservation do |f| %>
 
                     <div  class="update-content">
                         <div class="row">
-                            <%= f.label :name ,"予約したお部屋" ,class:"col-md-3" %><br>
+                            <%= f.label :room_name ,"予約したお部屋" ,class:"col-md-3" %><br>
                             <div class="col-md-9">
-                                <%= link_to "#{@reservation.name}", {controller: 'reservations', action: 'new', id: @reservation.room_id} %>
+                                
+                                <%= link_to "#{@reservation.room.room_name}", {controller: 'reservations', action: 'new', id:@reservation.room_id} %>
                             </div>
                         </div>
                     </div>
