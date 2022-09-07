@@ -22,10 +22,8 @@ class RoomsController < ApplicationController
   def search
    @user = current_user
    @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:address]}%")
-   binding.pry
    if params[:keyword].present?
-     @rooms = Room.where([ 'rooms.adress LIKE ? OR rooms.introduction LIKE ? OR rooms.room_name LIKE ? ', "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%" ])
-   
+     @rooms = Room.where([ 'rooms.address LIKE ? OR rooms.introducution LIKE ? OR rooms.room_name LIKE ? ', "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%" ])
     end
 
   end

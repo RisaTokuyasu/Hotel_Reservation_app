@@ -15,6 +15,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.invalid?
+      @room = @reservation.room
       render "new"
     else
      @room = @reservation.room
