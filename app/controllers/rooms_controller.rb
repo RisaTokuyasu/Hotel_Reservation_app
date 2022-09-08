@@ -10,9 +10,6 @@ class RoomsController < ApplicationController
   def home
     @user = current_user
     @rooms = Room.all
-
-  # @result = @q.result
-   # @rooms = Room.search(params[:address])
  end
 
   def search
@@ -20,8 +17,7 @@ class RoomsController < ApplicationController
    @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:address]}%")
    if params[:keyword].present?
      @rooms = Room.where([ 'rooms.address LIKE ? OR rooms.introducution LIKE ? OR rooms.room_name LIKE ? ', "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%" ])
-    end
-
+   end
   end
 
   def new
