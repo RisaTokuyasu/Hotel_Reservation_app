@@ -14,10 +14,6 @@ class RoomsController < ApplicationController
   # @result = @q.result
    # @rooms = Room.search(params[:address])
  end
- 
- def address
-   redirect_to search_rooms_path
- end
 
   def search
    @user = current_user
@@ -35,7 +31,7 @@ class RoomsController < ApplicationController
 
   def create
     @user = current_user
-    @room = Room.new(params.require(:room).permit(:room_name,:introducution,:total,:address,:picture,:user_id))
+    @room = Room.create(reservation_params)
     if @room.save
       redirect_to :rooms ,notice: "ルーム情報を新規登録しました"
     else
@@ -48,11 +44,10 @@ class RoomsController < ApplicationController
     @reservations = Reservation.new
   end
 
-# def search
-#   @rooms = Room.all
-#   @user = current_user
-#   @rooms = Room.where('rooms.address LIKE(?)',"%#{params[:search]}%")
-#   @search_result = "#{params[:search]}"
-#@result = @q.result
+  private
+
+  def reservation_params
+    params.require(:room).permit(:room_name,:introducution,:total,:address,:photo,:user_id)
+  end
 
 end

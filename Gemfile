@@ -75,3 +75,6 @@ gem 'carrierwave'
 gem 'pry-rails'
 
 gem 'ransack'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
