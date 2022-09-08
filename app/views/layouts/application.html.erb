@@ -5,12 +5,88 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="/assets/application-a8ca4c276281a74646e94609ae4a0eee0a7918869ecc82a06fbbc9997e6fc3b5.css" data-turbolinks-track="reload">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <%= yield %>
-  </body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+          <a href="/"><img alt="サイトのロゴ画像" src=https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png></a>
+
+          <form>
+            <div class="header-sharch d-lg-inline-block d-none">
+              <%= form_tag(search_rooms_path, :method =>'get') do %>
+              <%= text_field_tag :address, params[:address], class: "form-control", id: "search_area", placeholder:"エリア" %> 
+              <i class="fas fa-map-marker-alt"></i>
+              <%= submit_tag '',class:"d-none" %>
+              <% end %>
+            </div>
+            
+            <div class="header-sharch d-lg-inline-block d-none">
+              <%= form_tag(search_rooms_path, :method =>'get') do %>
+              <%= text_field_tag :keyword, params[:keyword], class: "form-control", placeholder:"キーワード" %>  
+              <i class="fas fa-search"></i> 
+              <%= submit_tag '',class:"d-none" %>
+              <% end %>
+            </div>
+          </form>
+        </div>
+
+        <div class="header-rignt-nav">
+            <div class="nav-item">
+           <% if user_signed_in? %>
+              <div class="nav-item d-sm-inline-block d-none">
+               <%= current_user.name %>
+              </div>
+              <div class="nav-item">               
+                <% if @user.image.attached? %>
+                  <%= image_tag @user.image,class:"icon-image host-icon nav-trigger"%> 
+                <% else %>
+                  <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg"  alt='アイコン画像' class="icon-image host-icon nav-trigger">
+                <% end %>  
+                <ul class="header-nav-menu" >
+                  <li class="menu_li"><%= link_to "ルーム登録", new_room_path %></li>
+                  <li class="menu_li"><%= link_to "予約済みルーム一覧", reservations_path %></li>
+                  <li class="menu_li"><%= link_to "登録済みルーム一覧",rooms_path%></li>
+                  <li class="menu_li"><%= link_to "設定", users_account_path %></li>
+                  <li class="menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </div>
+           <% else %>
+             <%= link_to "ログイン",new_user_session_path, class:"btn btn-primary my-2 mx-3" %>
+             <%= link_to "登録する",new_user_registration_path, class:"btn btn-secondary" %>
+           <% end %>
+            <script>
+              $(document).ready(function(){
+              $(".nav-trigger").click(function () {
+                $(".header-nav-menu").toggleClass("change");
+                });
+              });
+            </script>
+            </div>
+            </div>
+        </div>
+      </div>
+    </header>
+
+      <div class="notifications">
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+      </div>
+      <% alert %>
+
+      <%= yield %>
+
+     <footer class="footer">
+       <p>© 2020 POTEPAN.INC.</p>
+      </footer>
+
+   </body>
 </html>

@@ -10,6 +10,98 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
  *= require_self
+ *= require users.css
+ *= require home.css
+ *= require common.css
+ *= require application.css
+ *= require_tree .
  */
+
+body, p, ol, ul, td {
+   font-family: verdana, arial, helvetica, sans-serif;
+   font-size: 13px;
+   line-height: 18px;
+}
+body {
+    background-color: #fff;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 180px;
+    box-sizing: border-box;
+    color: #333333;
+}
+.footer{
+  position: absolute; 
+  bottom: 0;
+  width: 100%;
+  height: 180px;
+  margin-top: 64px;
+  padding-top: 90px;
+  background-color: #111;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+}
+
+a {
+    color: #000;
+}
+.user .user-nav-mobile {
+    height: auto;
+}
+.user .user-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+}
+.user .user-nav-pc .active {
+    border-right: 3px solid #4a90e2;
+}
+.user .user-nav-pc .active a {
+    color: #4a90e2;
+}
+
+.header-nav-menu {
+    background-color: #fff;
+    border: 3px solid #F6F8F9;
+    display: none; 
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    padding: 15px;
+    z-index: 1000;
+}
+.change{
+    display: inline-block; 
+}
+.header-nav-menu li {
+    line-height: 30px;
+    font-size: 16px;
+    padding: 3px 5px;
+}
+.host-icon {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.nav-trigger div:checked {
+    background-color: #fff;
+    border: 3px solid #F6F8F9;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    padding: 15px;
+    z-index: 1000;
+}
+.form-btn{
+    max-width: 100%;
+}
+
+.field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
